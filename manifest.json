@@ -1,10 +1,11 @@
 {
-    "name": "IPV Protection Extension",
-    "description": "Chrome extension to protect the digital privacy of IPV victims",
-    "version": "1.0",
+    "name": "News Protector",
+    "version": "1.0.0",
+    "description": "Top Headlines to Stay Caught Up!",
     "manifest_version": 3,
-    "action": {
-      "default_popup": "ui.html",
-      "default_icon": "draw_icon.png"
+    "author": "COMP590 Squad",
+    "action":{
+        "default_popup": "index.html",
+        "default_title": "News Protector"
     }
 }
