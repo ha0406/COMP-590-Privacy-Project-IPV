@@ -1,0 +1,10 @@
+{
+    "name": "IPV Protection Extension",
+    "description": "Chrome extension to protect the digital privacy of IPV victims",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "ui.html",
+      "default_icon": "draw_icon.png"
+    }
+}
