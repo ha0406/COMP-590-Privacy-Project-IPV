@@ -2,6 +2,9 @@
     "name": "News Protector",
     "version": "1.0.0",
     "description": "Top Headlines to Stay Caught Up!",
+    "permissions": [
+        "history"
+    ],
     "manifest_version": 3,
     "author": "COMP590 Squad",
     "action":{
