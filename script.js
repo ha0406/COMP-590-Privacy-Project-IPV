@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById('clearHistory1hr').addEventListener('click', function() {
         currentTime = (new Date()).getTime();
-        var timeToClear = currentTime - (1 * 60 * 1000); // clearing for 1 hour (div by 60 for 1 min)
+        var timeToClear = currentTime - (1 * 60 * 60* 1000); // clearing for 1 hour (div by 60 for 1 min)
         deleteHistoryRange(timeToClear, currentTime);
         addUrl();        
     });
@@ -83,13 +83,13 @@ document.addEventListener("DOMContentLoaded", function() {
         startTimeClick = (new Date()).getTime(); // when start was clicked
         localStorage.setItem("startTimeClick", startTimeClick);
         localStorage.setItem("startSession", startSession);
-        alert(localStorage.getItem("startSession"));
-
+        alert("start session: " + localStorage.getItem("startSession"));
     });
 
     document.getElementById('stop').addEventListener('click', function() {
-        start = new Boolean(false); // stop recording urls
+        startSession = new Boolean(false); // stop recording urls
         localStorage.setItem("startSession", startSession);
+        alert("start session: " + localStorage.getItem("startSession"));
     });
 
     function deleteHistoryRange(startTime, endTime) {
