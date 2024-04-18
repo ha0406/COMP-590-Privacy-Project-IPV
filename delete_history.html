@@ -2,15 +2,22 @@
 <html>
 <head>
     <title>Delete History</title>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8">
 </head>
 <body>
-    <h2>Delete History for the Last:</h2>
-    <div id="deleteHistoryPage">
-        <button id="deleteLastHour" class="btn btn-danger">Last Hour</button>
-        <button id="deleteLastSixHours" class="btn btn-danger">Last Six Hours</button>
-        <button id="deleteLastTwentyFourHours" class="btn btn-danger">Last 24 Hours</button>
+    <div class="page">
+        <div class = "privacy-title">
+            <h2 class="title">Preserve Your Privacy</h2>
+        </div>
+        <br><button id="clearHistoryRange">Clear History Range</button><br>
+        <br><button id="start">Start Session</button><br>
+        <button id="stop">Stop Session</button><br>
+        <br><button id="clearHistory1hr">Clear History Last 1 Hour (min)</button><br>
+        <button id="clearHistory6hr">Clear History Last 6 hours</button><br>
+        <button id="clearHistory24hr">Clear History Last 24 hours</button><br>
+        <button id="clearHistoryAll">Clear All History</button>
     </div>
-    <script src="deleteHistory.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

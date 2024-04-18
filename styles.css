@@ -1,0 +1,69 @@
+body {
+    background-color: #333; /* Dark grey background */
+    color: white; /* White text color */
+    font-family: Arial, sans-serif; /* Specify a font */
+    padding: 15px; /* Add some padding for better readability */
+    margin: 0; /* Remove default margin */
+}
+
+/* Standard page style */
+.page {
+    width: 500px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    margin: auto; /* Center the page horizontally */
+    padding: 20px; /* Add padding for content */
+    background-color: #444; /* Set background color for the page */
+    border-radius: 50px; /* Add rounded corners to the page */
+}
+
+/* Container styles */
+.title-container {
+    font-size: 14px;
+    text-indent: 10px;
+    width: 450px;
+    margin-top: 10px;
+    padding: 4px;
+    background-color: #333; /* Set background color */
+    border-radius: 30px; /* Add rounded corners */
+}
+
+.suggestion-box {
+    font-size: 10px;
+    position: absolute;
+    bottom: 30px;
+    left: 120px;
+    width: 450px;
+    padding: 15px;
+    background-color: #333; /* Set background color */
+    border-radius: 30px; /* Add rounded corners */
+}
+
+.privacy-title {
+    font-size: 10px;
+    text-indent: 10px;
+    width: 450px;
+    margin-top: 10px;
+    padding: 4px;
+    background-color: #333; /* Set background color */
+    border-radius: 30px; /* Add rounded corners */
+}
+
+/* Positioning styles */
+.top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.refresh-icon {
+    background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-refresh-512.png') no-repeat;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background-size: cover;
+}

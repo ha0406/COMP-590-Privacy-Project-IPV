@@ -1,5 +1,5 @@
 {
-    "name": "News Protector",
+    "name": "Top News Headlines",
     "version": "1.0.0",
     "description": "Top Headlines to Stay Caught Up!",
     "permissions": [
@@ -9,6 +9,7 @@
     "author": "COMP590 Squad",
     "action":{
         "default_popup": "index.html",
-        "default_title": "News Protector"
+        "default_title": "Top News Headlines",
+        "default_icon": "news.png"
     }
 }
