@@ -3,6 +3,7 @@ chrome.runtime.onInstalled.addListener(function() {
     console.log('Extension Installed');
 });
 
+// waits for action before adding history/stopping history
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     sendResponse();
     if (message.action === 'startAddingHistory') {
@@ -14,13 +15,15 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 });
 
 function addHistory() {
+    // create random interval to add history items
     randomInterval = Math.floor(Math.random() * 5000);
+    // add items at random interval
     historyTimeout = setTimeout(function() {
         const urls = [];
         urls.push("https://www.cnn.com", "https://www.nbc.com", "https://www.cbs.com", "https://www.nytimes.com", "https://www.washingtonpost.com");
         var randomIndex = Math.floor(Math.random() * 5);
-        console.log(randomInterval + " " + urls[randomIndex]);
-
+        console.log(randomInterval + " " + urls[randomIndex]); // verify that new time/item is added
+        // add to history
         chrome.history.addUrl({url: urls[randomIndex]}, function() {});
 
         addHistory();

@@ -73,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('clearHistoryRange').addEventListener('click', function() {
-        // this was hard to figure out because we have to store variables in local storage so they can be accessed after we nagivate away from the extension (visit another page, reload)
+        // store variables in local storage so they can be accessed after we nagivate away from the extension (visit another page, reload)
         const isEqual = localStorage.getItem("startSession") === "true";
-        if (isEqual) {
+        if (isEqual) { // checking if we have started session
             currentTime = (new Date()).getTime();
             deleteHistoryRange(parseInt(localStorage.getItem("startTimeClick")), currentTime);
             addUrl();
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startTimeClick = (new Date()).getTime(); // when start was clicked
         localStorage.setItem("startTimeClick", startTimeClick);
         localStorage.setItem("startSession", startSession);
+        // start background function
         chrome.runtime.sendMessage({action: "startAddingHistory"}, function(response) {});
     });
 
@@ -103,6 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //for sending a message
         start = new Boolean(false); // stop recording urls
         localStorage.setItem("startSession", startSession);
+        // stop background function
         chrome.runtime.sendMessage({action: "stopAddingHistory"}, function(response) {});
     });
 
@@ -125,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function deleteHistoryItems(keyword) {
+        // maxResults = 0 returns all results (for some reason...); must include startTime to search for ALL history items!!!
         chrome.history.search({text: keyword, startTime: 0, maxResults: 0}, function(historyItems) {
             historyItems.forEach(function(historyItems) {
                 chrome.history.deleteUrl({url: historyItems.url}, function() {
