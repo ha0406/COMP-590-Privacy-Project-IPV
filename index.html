@@ -4,19 +4,20 @@
     <title>Top News Headlines</title>
     <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8">
+    <!-- CSP to restrict sources and prevent XSS attacks -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self';">
 </head>
 <body>
     <div class="page">
         <div class="title-container">
             <h2 class="title">Top News Headlines</h2>
-            <a href="#" id="refreshButton" class="btn btn-primary top-right"><span class="refresh-icon"></span></a>
+            <!-- <a href="#" id="refreshButton" class="btn btn-primary top-right"><span class="refresh-icon"></span></a> -->
         </div>
         <div class="suggestion-box">
             <body>
-                <h2>Any suggestions for us?:</h2>
-                <input type="password" id="passcodeInput">
-                <button id="submitButton">Submit</button>
-                <!-- <button onclick="checkPasscode()">Submit</button> -->
+                <h2>Any suggestions for us?</h2>
+                <input type="text" id="passcodeInput" autocomplete="off" autocapitalize="off" spellcheck="false"/>
+                <button id="submitButton">Send</button>
                 <script src="passcode.js"></script>
             </body>
         </div>

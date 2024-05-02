@@ -67,3 +67,42 @@ body {
     display: inline-block;
     background-size: cover;
 }
+
+.resource-container, #ipvResourcesContainer {
+    color: #a219d0;
+    width: 500px;
+    margin: 10px auto; /* Center the container */
+    padding: 20px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resource {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #a219d0; /* Visual separation of each resource */
+}
+
+.resource:last-child {
+    border-bottom: none; /* Remove border from the last resource */
+}
+
+.resource h2 {
+    color: #333;
+}
+
+.resource p {
+    font-size: 14px;
+    color: #666;
+}
+
+.resource a {
+    color: #3366cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#showIPVResources {
+    margin: 10px auto; /* Center the container */
+}

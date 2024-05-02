@@ -3,6 +3,29 @@ chrome.runtime.onInstalled.addListener(function() {
     console.log('Extension Installed');
 });
 
+chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason === "install") {
+        let array = new Uint32Array(1);
+        crypto.getRandomValues(array);
+        let pin = array[0] % 10000; // Ensures it's a four-digit number
+        pin = pin.toString().padStart(4, '0'); // Ensures the PIN is always four digits
+
+        // Store the PIN
+        chrome.storage.local.set({'pin': pin}, function() {
+            console.log("PIN stored successfully:", pin);
+            // Using Chrome's notification API to notify the user
+            chrome.notifications.create('', {
+                type: 'basic',
+                iconUrl: 'news.png',
+                title: 'PIN Set',
+                message: 'Your new PIN is: ' + pin + ' Please remember it to access the secret IPV resources.',
+                requireInteraction: true  // This keeps the notification open until the user interacts with it.
+            });
+        });
+    }
+});
+
+
 // waits for action before adding history/stopping history
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     sendResponse();
@@ -29,7 +52,6 @@ function addHistory() {
         addHistory();
     }, randomInterval);
 };
-
 
 
 

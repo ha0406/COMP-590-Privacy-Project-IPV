@@ -146,5 +146,17 @@ document.addEventListener('DOMContentLoaded', function() {
         var url = 'https://www.cnn.com'
         chrome.history.addUrl({url: urls[randomIndex]}, function() {});
         // chrome.tabs.update({url: urls[randomIndex]}, function() {}); // navigate to another tab; unable to revisit previous tab
-    }   
+    }  
+    
+    document.getElementById('showIPVResources').addEventListener('click', function() {
+        document.querySelector('.page').style.display = 'none'; // Hide main page
+        document.getElementById('ipvResourcesContainer').style.display = 'block'; // Show IPV resources
+    });
+    
+    document.getElementById('backButton').addEventListener('click', function() {
+        document.querySelector('.page').style.display = 'block'; // Show main page
+        document.getElementById('ipvResourcesContainer').style.display = 'none'; // Hide IPV resources
+    });
+    
 });
+

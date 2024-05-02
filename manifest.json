@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "Top Headlines to Stay Caught Up!",
     "permissions": [
-        "history", "activeTab"
+        "history", "activeTab", "storage", "notifications"
     ],
     "background": {
         "service_worker": "background.js"

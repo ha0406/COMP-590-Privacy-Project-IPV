@@ -1,9 +1,16 @@
-document.getElementById("submitButton").addEventListener("click", function() {
-    const passcode = document.getElementById("passcodeInput").value;
-    if (passcode === "0001") {
-        window.location.href = "delete_history.html";
-    } else {
-        window.location.href = "index.html";
-    }
-
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById("submitButton").addEventListener("click", function() {
+        const passcodeInput = document.getElementById("passcodeInput").value;
+        // Clean password input to prevent against XSS and SQL injections
+        // var sanitizedInput = passcodeInput.value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        // alert(sanitizedInput);
+        chrome.storage.local.get('pin', function(result) {
+            if (passcodeInput === result.pin) {
+                window.location.href = "delete_history.html";
+            } else {
+                alert("Thank you for your feedback!"); // malicious user, thank for feedback but don't show secret page
+                window.location.reload();
+            }
+        });
+    });
 });

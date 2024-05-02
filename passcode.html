@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- This file is not being used!!! -->
 <html>
 <head>
     <title>Enter Passcode</title>
@@ -7,7 +8,8 @@
 <body>
     <h2>Enter Passcode</h2>
     <input type="password" id="passcodeInput">
-    <button id="submitButton">Submit</button>
+    <input type="checkbox" onchange="document.getElementById('passcodeInput').type = this.checked ? 'text' : 'password'"> Show password
+    <button id="submitButton">Submit!!!!</button>
     <!-- <button onclick="checkPasscode()">Submit</button> -->
     <script src="passcode.js"></script>
 
