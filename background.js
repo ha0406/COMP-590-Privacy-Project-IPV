@@ -18,7 +18,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
                 type: 'basic',
                 iconUrl: 'news.png',
                 title: 'PIN Set',
-                message: 'Your new PIN is: ' + pin + ' Please remember it to access the secret IPV resources.',
+                message: 'Your new PIN is: ' + pin + ' To access the secret IPV resources, input your PIN into the suggestions box. If you forget your pin, reinstall this extension.',
                 requireInteraction: true  // This keeps the notification open until the user interacts with it.
             });
         });
