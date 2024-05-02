@@ -48,6 +48,40 @@ body {
     border-radius: 30px; /* Add rounded corners */
 }
 
+button {
+    padding: 6px 12px;
+    font-size: 12px;
+    border: 2px solid rgba(141, 143, 141, 0.3); /* Slight border with opacity */
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+  }
+
+  button.startButton, button.stopButton {
+    padding: 8px 14px;
+    font-size: 12px;
+    display: inline-block; /* Use inline-block to align buttons horizontally */
+    vertical-align: middle; /* Align buttons vertically relative to each other */
+  }
+  
+  button.startButton {
+    background-color: #4caf50; /* Green */
+    color: white;
+    float: left;
+  }
+  
+  button.stopButton {
+    background-color: #f44336; /* Red */
+    color: white;
+    float: left;
+    margin-left: 10px;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+
 /* Positioning styles */
 .top-left {
     position: absolute;
@@ -58,6 +92,13 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
+}
+
+.delete-history-right-group {
+    font-size: 7px;
+    position: absolute;
+    right: 5;
+    bottom: 20;
 }
 
 .refresh-icon {
