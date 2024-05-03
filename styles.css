@@ -39,7 +39,7 @@ body {
 }
 
 .privacy-title {
-    font-size: 10px;
+    font-size: 14px;
     text-indent: 10px;
     width: 450px;
     margin-top: 10px;
@@ -58,7 +58,7 @@ button {
     transition: background-color 0.3s ease;
   }
 
-  button.startButton, button.stopButton {
+  button.startButton, button.stopButton, button.ipvButton {
     padding: 8px 14px;
     font-size: 12px;
     display: inline-block; /* Use inline-block to align buttons horizontally */
@@ -75,12 +75,21 @@ button {
     background-color: #f44336; /* Red */
     color: white;
     float: left;
-    margin-left: 10px;
+  }
+
+  button.ipvButton {
+    background-color: rgb(164, 30, 164);
+    float: right;
   }
   
   button:hover {
     opacity: 0.8;
   }
+
+  button.clearHistoryButtons {
+    font-size: 10px;
+  }
+
 
 /* Positioning styles */
 .top-left {
