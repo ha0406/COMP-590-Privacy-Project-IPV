@@ -1,5 +1,5 @@
-var startSession;
 var startTimeClick;
+// var startSession;
 
 var currentTime;
 var randomInterval;
@@ -46,6 +46,48 @@ document.addEventListener('DOMContentLoaded', function() {
     // // Add event listener to refresh button
     // refreshButton.addEventListener("click", fetchTopHeadlines);
 
+    const startButton = document.getElementById('start');
+    const stopButton = document.getElementById('stop');
+    let startSession = JSON.parse(localStorage.getItem("startSession")) || false;
+
+    // Function to update button visibility based on session state
+    function updateButtonVisibility() {
+        if (startSession) {
+            // If session is active (startSession is true), show stop button
+            startButton.style.display = 'none';
+            stopButton.style.display = 'inline-block';
+        } else {
+            // If session is not active (startSession is false), show start button
+            stopButton.style.display = 'none';
+            startButton.style.display = 'inline-block';
+        }
+    }
+
+    // Initial update of button visibility based on startSession
+    updateButtonVisibility();
+
+    // Event listener for start button click
+    startButton.addEventListener('click', function() {
+        startSession = true; // Start recording URLs
+        localStorage.setItem("startSession", JSON.stringify(startSession));
+        updateButtonVisibility(); // Update button visibility after session start
+        // Start background function
+        chrome.runtime.sendMessage({ action: "startAddingHistory" }, function(response) {
+            console.log('Session started.');
+        });
+    });
+
+    // Event listener for stop button click
+    stopButton.addEventListener('click', function() {
+        startSession = false; // Stop recording URLs
+        localStorage.setItem("startSession", JSON.stringify(startSession));
+        updateButtonVisibility(); // Update button visibility after session stop
+        // Stop background function
+        chrome.runtime.sendMessage({ action: "stopAddingHistory" }, function(response) {
+            console.log('Session stopped.');
+        });
+    });
+
     document.getElementById('clearHistory1hr').addEventListener('click', function() {
         currentTime = (new Date()).getTime();
         var timeToClear = currentTime - (1 * 60 * 60 * 1000); // clearing for 1 hour (div by 60 for 1 min)
@@ -72,14 +114,14 @@ document.addEventListener('DOMContentLoaded', function() {
         addUrl();        
     });
 
-    document.getElementById('start').addEventListener('click', function() {
-        startSession = new Boolean(true); // start recording urls
+    /*document.getElementById('start').addEventListener('click', function() {
+        startSession = true; // start recording urls
         startTimeClick = (new Date()).getTime(); // when start was clicked
         localStorage.setItem("startTimeClick", startTimeClick);
         localStorage.setItem("startSession", startSession);
         // start background function
         chrome.runtime.sendMessage({action: "startAddingHistory"}, function(response) {});
-    });
+    });*/
 
     function deleteHistoryRange(startTime, endTime) {
         chrome.history.deleteRange({startTime: startTime, endTime: endTime}, function() {
@@ -87,13 +129,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }); 
     }
 
-    document.getElementById('stop').addEventListener('click', function() {
+    /*document.getElementById('stop').addEventListener('click', function() {
         //for sending a message
-        start = new Boolean(false); // stop recording urls
+        startSession = false; // stop recording urls
         localStorage.setItem("startSession", startSession);
         // stop background function
         chrome.runtime.sendMessage({action: "stopAddingHistory"}, function(response) {});
-    });
+    });*/
 
     document.getElementById('submitButtonTime').addEventListener('click', function() {
         var userInputTime = document.getElementById('quantity').value;
