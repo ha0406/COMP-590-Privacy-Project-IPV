@@ -72,19 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         addUrl();        
     });
 
-    document.getElementById('clearHistoryRange').addEventListener('click', function() {
-        // store variables in local storage so they can be accessed after we nagivate away from the extension (visit another page, reload)
-        const isEqual = localStorage.getItem("startSession") === "true";
-        if (isEqual) { // checking if we have started session
-            currentTime = (new Date()).getTime();
-            deleteHistoryRange(parseInt(localStorage.getItem("startTimeClick")), currentTime);
-            addUrl();
-        }
-        else {
-            alert('nothing to remove'); // must turn on session
-        } 
-    });
-
     document.getElementById('start').addEventListener('click', function() {
         startSession = new Boolean(true); // start recording urls
         startTimeClick = (new Date()).getTime(); // when start was clicked
@@ -141,9 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const urls = [];
         urls.push("https://www.cnn.com", "https://www.nbc.com", "https://www.cbs.com", "https://www.nytimes.com", "https://www.washingtonpost.com");
         var randomIndex = Math.floor(Math.random() * 5);
-        alert(randomInterval + urls[randomIndex])
+        // alert(randomInterval + urls[randomIndex])
 
-        var url = 'https://www.cnn.com'
         chrome.history.addUrl({url: urls[randomIndex]}, function() {});
         // chrome.tabs.update({url: urls[randomIndex]}, function() {}); // navigate to another tab; unable to revisit previous tab
     }  

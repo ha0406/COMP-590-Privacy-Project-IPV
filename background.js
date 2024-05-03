@@ -1,4 +1,7 @@
 var historyTimeout;
+const previousHistoryRecord = [];
+const currentHistoryRecord = [];
+
 chrome.runtime.onInstalled.addListener(function() {
     console.log('Extension Installed');
 });
@@ -30,12 +33,49 @@ chrome.runtime.onInstalled.addListener(function (details) {
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     sendResponse();
     if (message.action === 'startAddingHistory') {
+        recordPreviousHistory();
         addHistory();
     } else if (message.action === 'stopAddingHistory') {
         clearTimeout(historyTimeout);
+        recordCurrentHistory();
+        removeHistory();
         console.log('stop adding history items')
     }
 });
+
+function recordPreviousHistory() {
+    chrome.history.search({text: '', startTime: 0, maxResults: 0}, function(historyItems) {
+        historyItems.forEach(function(historyItems) {
+            previousHistoryRecord.push(historyItems.id);
+        });
+    });
+    console.log('prev')
+    let i = 0;
+    // while (i < )
+    console.log(previousHistoryRecord);
+}
+
+function recordCurrentHistory() {
+    chrome.history.search({text: '', startTime: 0, maxResults: 0}, function(historyItems) {
+        historyItems.forEach(function(historyItems) {
+            if (!previousHistoryRecord.includes(historyItems.id)) {
+                currentHistoryRecord.push(historyItems.id);
+            }
+        });
+    });
+    console.log('current')
+    console.log(currentHistoryRecord);
+}
+
+function removeHistory() {
+    chrome.history.search({text: '', startTime: 0, maxResults: 0}, function(historyItems) {
+        historyItems.forEach(function(historyItems) {
+            if (currentHistoryRecord.includes(historyItems.id)) {
+                chrome.history.deleteUrl({url: historyItems.url}, function() { });
+            }
+        });
+    });
+}
 
 function addHistory() {
     // create random interval to add history items
