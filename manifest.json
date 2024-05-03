@@ -14,5 +14,10 @@
         "default_popup": "index.html",
         "default_title": "Top News Headlines",
         "default_icon": "news.png"
+    },
+    "icons": {
+        "16": "news.png",
+        "48": "news.png",
+        "128": "news.png"
     }
 }

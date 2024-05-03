@@ -139,14 +139,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('submitButtonTime').addEventListener('click', function() {
         var userInputTime = document.getElementById('quantity').value;
+        var userInputTimeSanitized = userInputTime.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         currentTime = (new Date()).getTime();
-        var timeToClear = currentTime - (userInputTime * 60 * 1000); // clearing for 1 hour (div by 60 for 1 min)
+        var timeToClear = currentTime - (userInputTimeSanitized * 60 * 1000); // clearing for 1 hour (div by 60 for 1 min)
         deleteHistoryRange(timeToClear, currentTime);
     });
     
     document.getElementById('submitButtonKeyword').addEventListener('click', function() {
         var userInputKeyword = document.getElementById('keyword').value;
-        deleteHistoryItems(userInputKeyword);
+        var userInputKeywordSanitized = userInputKeyword.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        deleteHistoryItems(userInputKeywordSanitized);
     });
 
     function deleteHistoryRange(startTime, endTime) {

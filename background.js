@@ -6,6 +6,7 @@ chrome.runtime.onInstalled.addListener(function() {
     console.log('Extension Installed');
 });
 
+// Random Pin Generation and Display
 chrome.runtime.onInstalled.addListener(function (details) {
     if (details.reason === "install") {
         let array = new Uint32Array(1);
